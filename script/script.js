@@ -1,12 +1,17 @@
 let canvas;
-let ctx;
-let character = new Image();
+let world;
 
 function init() {
     canvas = document.getElementById('canvas');
-    ctx = canvas.getContext('2d');
-    character.src = '../img/2_character_pepe/1_idle/idle/I-1.png'
-    setTimeout( function() {
-    ctx.drawImage(character, 20, 20, 50, 150)
-    } ,2000)
+    world = new World(canvas);
+
+}
+
+function getRandomNumber(min, max) {
+  // Ensure min is always less than or equal to max
+  if (min > max) {
+    [min, max] = [max, min];
+  }
+
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
