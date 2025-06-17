@@ -26,7 +26,7 @@ const level1 = new Level (
         new BackgroundObject('../img/5_background/layers/1_first_layer/full.png', 1123 * 2),
     ],
     [
-        
+        new CollactableObject('../img/6_salsa_bottle/salsa_bottle.png', 350, 340)
     ],
     2200
 )

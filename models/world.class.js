@@ -2,6 +2,8 @@ class World {
     level = level1
     character = new Character();
     statusbar = new StatusBar();
+    statusbarBottle = new BottleStatusbar();
+    statusbarCoin = new CoinStatusbar();
     enemies = this.level.enemies;
     clouds = this.level.clouds;
     backgroundObjects = this.level.backgroundObjects;
@@ -53,6 +55,8 @@ class World {
 
         this.ctx.translate(- this.camera_x, 0)
         this.addObjectsToMap([this.statusbar]);
+        this.addObjectsToMap([this.statusbarBottle]);
+        this.addObjectsToMap([this.statusbarCoin]);
         this.ctx.translate( this.camera_x, 0)
 
         this.addObjectsToMap(this.throwableObjects)
