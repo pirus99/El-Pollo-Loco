@@ -1,17 +1,9 @@
 let canvas;
 let world;
+let keyboard = new Keyboard();
 
 function init() {
     canvas = document.getElementById('canvas');
-    world = new World(canvas);
-
+    world = new World(canvas, keyboard);
 }
 
-function getRandomNumber(min, max) {
-  // Ensure min is always less than or equal to max
-  if (min > max) {
-    [min, max] = [max, min];
-  }
-
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}

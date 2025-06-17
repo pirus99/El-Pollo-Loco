@@ -4,10 +4,10 @@ class Cloud extends MovableObject {
     x = 200;
     y = 50;
 
-    constructor() {
+    constructor(xNew) {
         super().loadImage('../img/5_background/layers/4_clouds/1.png');
-        this.x = Math.random() * 450;
-
+        this.xCalc = 250 + xNew; 
+        this.x = Math.random() * this.xCalc;
         this.animate();
     }
 
@@ -16,7 +16,7 @@ class Cloud extends MovableObject {
             if (this.x > -490) {
                 this.x -= 0.1;
             } else {
-                this.x += canvas.width + 490;
+                this.x += level1.levelEndX + 1500;
             }
         }, 20);
     }
