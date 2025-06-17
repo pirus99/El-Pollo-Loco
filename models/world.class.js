@@ -86,7 +86,7 @@ class World {
             mo.x = mo.x * -1;
         }
         mo.drawCTX(this.ctx)
-        mo.drawFrame(this.ctx);
+        /* mo.drawFrame(this.ctx); */ //Rahmen um objekte einblenden
         if(mo.otherDirection) {
             this.ctx.restore();   
             mo.x = mo.x * -1; 
