@@ -25,5 +25,8 @@ const level1 = new Level (
         new BackgroundObject('../img/5_background/layers/2_second_layer/full.png', 1123 * 2),
         new BackgroundObject('../img/5_background/layers/1_first_layer/full.png', 1123 * 2),
     ],
+    [
+        new ThrowableObject(200, 200)
+    ],
     2200
 )

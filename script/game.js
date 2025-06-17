@@ -18,6 +18,9 @@ window.addEventListener('keydown', (e) => {
     } else if (e.key == 'Shift') {
         keyboard.SHIFT = true;
         keyboard.KEYPRESS = true;
+    } else if (e.key == 'G' || e.key == 'g' || e.key == '0') {
+        keyboard.GRENADE = true;
+        keyboard.KEYPRESS = true;
     }
     console.log(keyboard);
 });
@@ -40,6 +43,9 @@ window.addEventListener('keyup', (e) => {
         keyboard.KEYPRESS = false;
     } else if (e.key == 'Shift') {
         keyboard.SHIFT = false;
+        keyboard.KEYPRESS = false;
+    } else if (e.key == 'G' || e.key == 'g' || e.key == '0') {
+        keyboard.GRENADE = false;
         keyboard.KEYPRESS = false;
     }
 

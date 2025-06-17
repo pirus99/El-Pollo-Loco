@@ -6,4 +6,5 @@ class Keyboard {
     DOWN;
     SPACE;
     SHIFT;
+    GRENADE;
 }
