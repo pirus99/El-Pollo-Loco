@@ -1,4 +1,4 @@
-class CollactableObject extends MovableObject {
+class CollactableObject extends DrawableObject {
         constructor(img, x, y){
         super();
         this.x = x;

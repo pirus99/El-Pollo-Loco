@@ -5,6 +5,8 @@ class DrawableObject {
     x = 120;
     y = 280;
     imageCache = [];
+    bottles = 10;
+    coins = 0;
 
     loadImage(path) {
         this.img = new Image();
@@ -20,11 +22,11 @@ class DrawableObject {
     }
 
     drawFrame(ctx) {
-        if (this instanceof Character || this instanceof Boss || this instanceof Chicken) {
+        if (this instanceof Character || this instanceof Boss || this instanceof Chicken || this instanceof CollactableObject) {
         ctx.beginPath();
         ctx.lineWidth = '5';
         ctx.strokeStyle = 'red';
-        ctx.rect(this.x, this.y, this.width, this.height)
+        ctx.rect(this.x + 25, this.y, this.width - 50, this.height)
         ctx.stroke();
         }
     }

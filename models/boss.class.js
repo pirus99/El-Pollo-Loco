@@ -30,6 +30,7 @@ class Boss extends MovableObject {
     jump() {
 
     }
+    
     moveLeft() {
         this.direction = 1; // 1 for right, -1 for left
         setInterval(() => {

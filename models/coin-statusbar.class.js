@@ -17,4 +17,20 @@ class CoinStatusbar extends StatusBar {
         this.width = 170;
         this.setPercentage(0);
     }
+
+    resolveIndex() {
+        if (this.percentage > 20) {
+            return 0;
+        } else if (this.percentage > 16) {
+            return 1;
+        } else if (this.percentage > 12) {
+            return 2;
+        } else if (this.percentage > 6) {
+            return 3;
+        } else if (this.percentage > 3) {
+            return 4;
+        } else {
+            return 5;
+    }
+    }
 }

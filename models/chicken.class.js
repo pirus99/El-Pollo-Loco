@@ -5,8 +5,7 @@ class Chicken extends MovableObject {
     width = 77 * this.factor / 100;
     x = 460 * (Math.random() / 2 + 0.5 * 2);
     y = getRandomNumber(338, 345);
-    speedX;
-    speedY;
+    stop;
 
     imagesWalk = [
         '../img/3_enemies_chicken/chicken_normal/1_walk/1_w.png',
@@ -23,18 +22,22 @@ class Chicken extends MovableObject {
 
     moveLeft() {
         setInterval(() => {
+            if (!this.stop) {
             if (this.x > -490) {
                 this.x -= 1 * this.chickenFactor / 100;
             } else {
                 this.x += level1.levelEndX + 1500;
             }
+        }
         }, 20);
     }
 
     animate() {
         this.moveLeft();
         setInterval(() => {
+        if (!this.stop) {
         this.playAnimation(this.imagesWalk);
+        }
     }, 100)
-}
+    }
 }

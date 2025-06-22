@@ -26,7 +26,26 @@ const level1 = new Level (
         new BackgroundObject('../img/5_background/layers/1_first_layer/full.png', 1123 * 2),
     ],
     [
-        new CollactableObject('../img/6_salsa_bottle/salsa_bottle.png', 350, 340)
+        new CollactableObject('../img/6_salsa_bottle/salsa_bottle.png', 350 * getRandomNumber(85, 115)/100, 340),
+        new CollactableObject('../img/6_salsa_bottle/salsa_bottle.png', 350 * 1.5 * getRandomNumber(85, 115)/100, 340),
+        new CollactableObject('../img/6_salsa_bottle/salsa_bottle.png', 350 * 2 * getRandomNumber(85, 115)/100, 340),
+        new CollactableObject('../img/6_salsa_bottle/salsa_bottle.png', 350 * 2.7 * getRandomNumber(85, 115)/100, 340),
+        new CollactableObject('../img/6_salsa_bottle/salsa_bottle.png', 350 * 3.4 * getRandomNumber(85, 115)/100, 340),
+        new CollactableObject('../img/6_salsa_bottle/salsa_bottle.png', 350 * 3.8 * getRandomNumber(85, 115)/100, 340), 
+        new CollactableObject('../img/6_salsa_bottle/salsa_bottle.png', 350 * 4.2 * getRandomNumber(85, 115)/100, 340), 
+        new CollactableObject('../img/6_salsa_bottle/salsa_bottle.png', 350 * 5.4 * getRandomNumber(85, 115)/100, 340), 
+        new CollactableObject('../img/6_salsa_bottle/salsa_bottle.png', 350 * 6.2 * getRandomNumber(85, 115)/100, 340), 
     ],
-    2200
+    [
+        new CollactableObject('../img/8_coin/coin_1.png', 320 * getRandomNumber(85, 115)/100, 280),
+        new CollactableObject('../img/8_coin/coin_1.png', 320 * 1.5 * getRandomNumber(85, 115)/100, 280),
+        new CollactableObject('../img/8_coin/coin_1.png', 320 * 2 * getRandomNumber(85, 115)/100, 280),
+        new CollactableObject('../img/8_coin/coin_1.png', 320 * 2.7 * getRandomNumber(85, 115)/100, 280),
+        new CollactableObject('../img/8_coin/coin_1.png', 320 * 3.4 * getRandomNumber(85, 115)/100, 280),
+        new CollactableObject('../img/8_coin/coin_1.png', 320 * 3.8 * getRandomNumber(85, 115)/100, 280), 
+        new CollactableObject('../img/8_coin/coin_1.png', 320 * 4.2 * getRandomNumber(85, 115)/100, 280), 
+        new CollactableObject('../img/8_coin/coin_1.png', 320 * 5.4 * getRandomNumber(85, 115)/100, 280), 
+        new CollactableObject('../img/8_coin/coin_1.png', 320 * 6.2 * getRandomNumber(85, 115)/100, 280),
+    ],
+    2200 //LevelEndX
 )
