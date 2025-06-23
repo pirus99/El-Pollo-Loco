@@ -21,6 +21,9 @@ window.addEventListener('keydown', (e) => {
     } else if (e.key == 'G' || e.key == 'g' || e.key == '0') {
         keyboard.GRENADE = true;
         keyboard.KEYPRESS = true;
+    } else if (e.key == 'Enter') {
+        keyboard.ENTER = true;
+        keyboard.KEYPRESS = true;
     }
     console.log(keyboard);
 });
@@ -47,6 +50,9 @@ window.addEventListener('keyup', (e) => {
     } else if (e.key == 'G' || e.key == 'g' || e.key == '0') {
         keyboard.GRENADE = false;
         keyboard.KEYPRESS = false;
+    } else if (e.key == 'Enter') {
+        keyboard.ENTER = true;
+        keyboard.KEYPRESS = true;
     }
 
 });

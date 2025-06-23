@@ -1,15 +1,16 @@
 const level1 = new Level (
     [
-        new Chicken(),
-        new Chicken(),
-        new Chicken(),
+        new Chicken(500, 1),
+        new Chicken(700, 1),
+        new Chicken(900, 3),
+        new ChickenSmall(500, 1),
         new Boss(),
     ],
     [
         new Cloud(77),
         new Cloud(77 * 10),
         new Cloud(77 * 18),
-        new Cloud(77 * 28)
+        new Cloud(77 * 26)
     ],
     [
         new SuperBackgroundObject('../img/5_background/layers/air.png', 0),

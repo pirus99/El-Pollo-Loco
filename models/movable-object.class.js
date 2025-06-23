@@ -19,7 +19,7 @@ class MovableObject extends DrawableObject {
     }
 
     isAboveGround() {
-        if(this instanceof ThrowableObject || this instanceof Chicken) {
+        if(this instanceof ThrowableObject || this instanceof Chicken || this instanceof Boss) {
             return true;
         } else {
             return this.y < 145;
@@ -62,6 +62,18 @@ class MovableObject extends DrawableObject {
         }
     }
 
+    killBottle() {
+        this.applyGravity();
+    }
+
+    bottleHit() {
+        this.energy -= 30;
+        console.log('Bottle Hit!' + this.energy + 'HP')
+        if(this.energy < 0) {
+            this.killBottle();
+        } 
+    }
+
     hit() {
         this.energy -= .1;
         console.log('hit! left: ' + this.energy + 'HP');
@@ -75,11 +87,9 @@ class MovableObject extends DrawableObject {
     flatenChicks(mo) {
         mo.height = 20;
         mo.y += 80 
-
-
         setTimeout(() => {
            mo.applyGravity();
-        }, 200);
+        }, 100);
     }
 
     collect(type) {

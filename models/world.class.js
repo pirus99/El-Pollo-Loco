@@ -10,11 +10,14 @@ class World {
     grenadeObjects = this.level.collectableObjects;
     throwableObjects = this.level.throwableObjects;
     coinObjects = this.level.collectableCoinObjects;
+    splashObjects = this.level.splashObjects;
     canvas;
     ctx;
     keyboard;
     camera_x = - 100;
     grenadeTime = new Date().getTime();
+    startscreen = true;
+    cleanup = false;
 
 
     constructor(canvas, keyboard) {
@@ -33,13 +36,38 @@ class World {
         setInterval(() => {
             this.grenade();
             this.CheckCollisions();
+            this.cleanupSplash();
         }, 10);
+    }
+
+    cleanupSplash() {
+        if(this.cleanup){
+            this.splashObjects = [];
+            this.cleanup = false;
+        }
     }
 
     CheckCollisions() {
         this.checkJumpOnTopOfChicken();
         this.checkCollisionWithCollectable();
+        this.checkCollisionWithThrowable();
+    }
 
+    checkCollisionWithThrowable() {
+        this.level.throwableObjects.forEach((obj, index) => {
+            this.level.enemies.forEach((enemy, enemyIndex) => {
+                if (enemy.isColliding(obj)) {
+                    console.log('bottle Hit!');
+                    enemy.bottleHit()
+                    this.statusbarBottle.setPercentage(this.character.bottles);
+                    let newObject = new SplashObject(this.level.throwableObjects[index].x, this.level.throwableObjects[index].y)
+                    this.splashObjects.push(newObject)
+                    this.level.throwableObjects.splice(index, 1)
+
+                    // Optionally, handle enemy hit logic here
+                }
+            });
+        });
     }
 
     checkCollisionWithCollectable() {
@@ -74,7 +102,7 @@ class World {
                 if (isFalling && isAboveEnemy && isWithinEnemyX && enemy instanceof Chicken) {
                     enemy.stop = true;
                     enemy.kill(enemy, index);
-                    this.level.collectableCoinObjects.push(new CollactableObject('../img/8_coin/coin_1.png', enemy.x, enemy.y - 50),)
+                    this.level.collectableCoinObjects.push(new CollactableObject('../img/8_coin/coin_1.png', enemy.x, enemy.y - 50))
                     // Optional: small bounce after stomping
                     this.character.speedY = 2;
                 } else if (!isAboveEnemy) {
@@ -87,7 +115,7 @@ class World {
 
 
     draw() {
-        this.ctx.clearRect(0, 0, canvas.width, canvas.height); +
+         this.ctx.clearRect(0, 0, canvas.width, canvas.height); +
 
             this.ctx.translate(this.camera_x, 0)
 
@@ -106,8 +134,9 @@ class World {
         this.addObjectsToMap(this.coinObjects)
         this.addObjectsToMap([this.character]);
         this.addObjectsToMap(this.enemies);
+        this.addObjectsToMap(this.splashObjects)
 
-        this.ctx.translate(- this.camera_x, 0)
+        this.ctx.translate(- this.camera_x, 0) 
 
         let self = this;
         requestAnimationFrame(() => self.draw());

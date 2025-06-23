@@ -7,4 +7,5 @@ class Keyboard {
     SPACE;
     SHIFT;
     GRENADE;
+    ENTER;
 }

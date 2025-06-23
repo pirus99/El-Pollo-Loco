@@ -6,6 +6,7 @@ class Level {
         this.collectableObjects = collectableObjects;
         this.collectableCoinObjects = collectableCoins;
         this.throwableObjects = [];
+        this.splashObjects = [];
         this.levelEndX = levelEndX;
     }
 }
