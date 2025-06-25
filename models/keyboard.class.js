@@ -8,4 +8,6 @@ class Keyboard {
     SHIFT;
     GRENADE;
     ENTER;
+    CLICK;
+    JUMP;
 }

@@ -26,7 +26,11 @@ class Chicken extends MovableObject {
             if (this.x > -490) {
                 this.x -= speed * this.chickenFactor / 100;
             } else {
-                this.x += level1.levelEndX + 1500;
+                try{
+                this.x += world.level.levelEndX + 1500;
+                } catch {
+                    world.animate = false;
+                }
             }
         }
         }, 20);

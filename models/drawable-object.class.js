@@ -22,7 +22,7 @@ class DrawableObject {
     }
 
     drawFrame(ctx) {
-        if (this instanceof Character || this instanceof Boss || this instanceof Chicken || this instanceof ChickenSmall || this instanceof CollactableObject || this instanceof SplashObject) {
+        if (this instanceof Character || this instanceof Boss || this instanceof Chicken || this instanceof ChickenSmall || this instanceof CollactableObject || this instanceof SplashObject || this instanceof Overlay) {
         ctx.beginPath();
         ctx.lineWidth = '5';
         ctx.strokeStyle = 'red';

@@ -8,11 +8,13 @@ function init() {
 }
 
 function initStart() {
-    world = new Startscreen(canvas, keyboard);
+    world = new Startscreen(canvas, keyboard, '../img/9_intro_outro_screens/start/startscreen_1.png');
 }
 
+
 function initWorld() {
-    world = 0;
     world = new World(canvas, keyboard);
 }
+
+
 

@@ -16,7 +16,11 @@ class Cloud extends MovableObject {
             if (this.x > -490) {
                 this.x -= 0.1;
             } else {
+                try {
                 this.x += level1.levelEndX + 1500;
+                } catch {
+
+                }
             }
         }, 20);
     }

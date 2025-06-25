@@ -3,6 +3,7 @@ class Boss extends MovableObject {
     width = 275;
     x = 2000;
     y = 105;
+    energy = 250;
 
     imagesWalk = [
         '../img/4_enemie_boss_chicken/1_walk/G1.png',
@@ -21,28 +22,39 @@ class Boss extends MovableObject {
     ];
     currentImage = 0;
 
-    constructor() {
+    constructor(x, y) {
         super().loadImage('../img/4_enemie_boss_chicken/1_walk/G1.png');
-        this-this.loadImages(this.imagesWalk)
+        this.x = x;
+        this.xVal = x;
+        this.y = y;
+        this - this.loadImages(this.imagesWalk)
         this.animate();
     }
 
     jump() {
 
     }
-    
+
     moveLeft() {
         this.direction = 1; // 1 for right, -1 for left
         setInterval(() => {
+            if (this.x < world.character.x) {
+                this.direction = 1;
+            } else {
+                this.direction = -1;
+            }
+
             if (this.direction === 1) {
                 this.x += 4;
-                if (this.x >= 2000) {
+                if (this.x >= this.xVal || this.x + this.width < world.character.x) {
                     this.direction = -1;
+                    this.otherDirection = false;
                 }
             } else {
                 this.x -= 4;
-                if (this.x <= 2000 - 350) {
+                if (this.x <= this.xVal - 350 && !(this.x - 350 <= world.character.x)) {
                     this.direction = 1;
+                    this.otherDirection = true;
                 }
             }
         }, 20);
@@ -51,7 +63,7 @@ class Boss extends MovableObject {
     animate() {
         this.moveLeft();
         setInterval(() => {
-        this.playAnimation(this.imagesWalk);
-    }, 200)
-}
+            this.playAnimation(this.imagesWalk);
+        }, 200)
+    }
 }

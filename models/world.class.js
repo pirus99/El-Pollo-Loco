@@ -1,5 +1,6 @@
 class World {
-    level = level1
+    actualLevel = createLevel1();
+    level = this.actualLevel;
     character = new Character();
     statusbar = new StatusBar();
     statusbarBottle = new BottleStatusbar();
@@ -11,6 +12,7 @@ class World {
     throwableObjects = this.level.throwableObjects;
     coinObjects = this.level.collectableCoinObjects;
     splashObjects = this.level.splashObjects;
+    overlayObjects = this.level.overlayObjects;
     canvas;
     ctx;
     keyboard;
@@ -18,6 +20,7 @@ class World {
     grenadeTime = new Date().getTime();
     startscreen = true;
     cleanup = false;
+    animate = true;
 
 
     constructor(canvas, keyboard) {
@@ -37,11 +40,12 @@ class World {
             this.grenade();
             this.CheckCollisions();
             this.cleanupSplash();
+            this.gameEndWon();
         }, 10);
     }
 
     cleanupSplash() {
-        if(this.cleanup){
+        if (this.cleanup) {
             this.splashObjects = [];
             this.cleanup = false;
         }
@@ -115,9 +119,9 @@ class World {
 
 
     draw() {
-         this.ctx.clearRect(0, 0, canvas.width, canvas.height); +
+        this.ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            this.ctx.translate(this.camera_x, 0)
+        this.ctx.translate(this.camera_x, 0)
 
         this.addObjectsToMap(this.backgroundObjects);
         this.addObjectsToMap(this.clouds);
@@ -134,12 +138,17 @@ class World {
         this.addObjectsToMap(this.coinObjects)
         this.addObjectsToMap([this.character]);
         this.addObjectsToMap(this.enemies);
-        this.addObjectsToMap(this.splashObjects)
+        this.addObjectsToMap(this.splashObjects);
 
-        this.ctx.translate(- this.camera_x, 0) 
+        this.ctx.translate(- this.camera_x, 0)
+
+        this.addObjectsToMap(this.overlayObjects);
+
 
         let self = this;
-        requestAnimationFrame(() => self.draw());
+        if (this.animate) {
+            requestAnimationFrame(() => self.draw());
+        }
     }
 
     grenade() {
@@ -176,11 +185,44 @@ class World {
             mo.x = mo.x * -1;
         }
         mo.drawCTX(this.ctx)
-        /* mo.drawFrame(this.ctx); */ //Rahmen um objekte einblenden
+        /* mo.drawFrame(this.ctx) */
         if (mo.otherDirection) {
             this.ctx.restore();
             mo.x = mo.x * -1;
         }
+    }
+
+    gameEndWon() {
+        // Check if there are no Boss instances left in the enemies array
+        if (this.level.enemies.filter(enemy => enemy instanceof Boss).length === 0) {
+            if (!this.gameOver) {
+                this.gameOver = true;
+                this.level.overlayObjects.push(new Overlay('../img/9_intro_outro_screens/game_over/game over.png', 0, 0, canvas.width, canvas.height, true));
+                this.level.overlayObjects.push(new Overlay('../img/You won, you lost/You win B.png', 210, 10, 300, 80, false));
+                this.clearWorld();
+                const interval = setInterval(() => {
+                    if (keyboard.CLICK) {
+                        this.level.overlayObjects = [];
+                        initWorld();
+                        clearInterval(interval)
+                    }
+                }, 25);
+            }
+        }
+    }
+
+    clearWorld() {
+        for (let i = 0; i < this.level.enemies.length; i++) {
+            this.level.enemies[i].applyGravity();
+        }
+        this.statusbar.x = -500;
+        this.statusbarBottle.x = -500;
+        this.statusbarCoin.x = -500;
+        this.grenadeObjects = []
+        this.throwableObjects = []
+        this.coinObjects = []
+        this.splashObjects = []
+        this.character.applyGravity(true);
     }
 
 }
