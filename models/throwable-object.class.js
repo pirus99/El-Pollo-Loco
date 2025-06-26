@@ -23,15 +23,25 @@ class ThrowableObject extends MovableObject {
   throw() {
     this.speedY = 12;
     this.applyGravity();
-    setInterval(() => {
+    const aniInterval = setInterval(() => {
+      if(!world.character.otherDirection){
       this.x += 10;
+      } else {
+        this.x -= 12;
+      }
+      if (world.animate == false) {
+                clearInterval(aniInterval);
+      }
     }, 25);
   }
 
   animateThrow() {
       this.loadImages(this.imagesSpinning);
-      setInterval(() => {
+      const aniInterval = setInterval(() => {
         this.playAnimation(this.imagesSpinning);
+        if (world.animate == false) {
+                clearInterval(aniInterval);
+        }
       }, 50);
   }
 }

@@ -10,5 +10,6 @@ class ChickenSmall extends Chicken {
    constructor(x, speed) {
        super(x, speed);
        this.loadImages(this.imagesWalk);
+       this.preloadSounds(['./../sound/chicken-cluking-3.mp3'])
    }
 } 

@@ -34,9 +34,9 @@ class Overlay extends DrawableObject {
                 let gradient = ctx.createLinearGradient(this.grxs, this.grys, this.grxe, this.grye);
                     gradient.addColorStop(0, "#ffd60c");
                     gradient.addColorStop(1, "#ff8a00");
-                    ctx.font = "50px Arial";
+                    ctx.font = "40px Goblin";
                     ctx.fillStyle = gradient;
-                    ctx.fillText("Click to Restart", 195, 420);
+                    ctx.fillText("Click to Restart", 120, 420);
             }
     }
 

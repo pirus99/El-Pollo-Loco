@@ -1,10 +1,10 @@
 function createLevel1() {
     return new Level(
     [
-        /* new Chicken(500, 1),
+        new Chicken(500, 1),
         new Chicken(700, 1),
         new Chicken(900, 3), 
-        new ChickenSmall(500, 1), */
+        new ChickenSmall(500, 1),
         new Boss(2000, 105),
     ],
     [
@@ -18,14 +18,14 @@ function createLevel1() {
         new BackgroundObject('../img/5_background/layers/3_third_layer/full.png', -40),
         new BackgroundObject('../img/5_background/layers/2_second_layer/full.png', -40),
         new BackgroundObject('../img/5_background/layers/1_first_layer/full.png', -40),
-        new SuperBackgroundObject('../img/5_background/layers/air.png', 1083),
-        new BackgroundObject('../img/5_background/layers/3_third_layer/full.png', 1083),
-        new BackgroundObject('../img/5_background/layers/2_second_layer/full.png', 1083),
-        new BackgroundObject('../img/5_background/layers/1_first_layer/full.png', 1083),
-        new SuperBackgroundObject('../img/5_background/layers/air.png', 1083 * 2),
-        new BackgroundObject('../img/5_background/layers/3_third_layer/full.png', 1083 * 2),
-        new BackgroundObject('../img/5_background/layers/2_second_layer/full.png', 1083 * 2),
-        new BackgroundObject('../img/5_background/layers/1_first_layer/full.png', 1083 * 2),
+        new SuperBackgroundObject('../img/5_background/layers/air.png', 1084),
+        new BackgroundObject('../img/5_background/layers/3_third_layer/full.png', 1084),
+        new BackgroundObject('../img/5_background/layers/2_second_layer/full.png', 1084),
+        new BackgroundObject('../img/5_background/layers/1_first_layer/full.png', 1084),
+        new SuperBackgroundObject('../img/5_background/layers/air.png', (1083 + 20) * 2),
+        new BackgroundObject('../img/5_background/layers/3_third_layer/full.png', (1083 + 20) * 2),
+        new BackgroundObject('../img/5_background/layers/2_second_layer/full.png', (1083 + 20) * 2),
+        new BackgroundObject('../img/5_background/layers/1_first_layer/full.png', (1083 + 20) * 2),
     ],
     [
         new CollactableObject('../img/6_salsa_bottle/1_salsa_bottle_on_ground.png', 350 * getRandomNumber(85, 115)/100, 340),

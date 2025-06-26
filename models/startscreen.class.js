@@ -1,9 +1,6 @@
 class Startscreen {
     ctx;
     keyboard;
-    
-    
-    
 
     constructor(canvas, keyboard, img){
         this.ctx = canvas.getContext('2d');
@@ -24,6 +21,7 @@ class Startscreen {
         };
         this.startGame();
         this.changeGradient();
+        console.log('Startscreen Called')
     }
 
     draw() {
@@ -45,9 +43,9 @@ class Startscreen {
                 let gradient = this.ctx.createLinearGradient(this.grxs, this.grys, this.grxe, this.grye);
                 gradient.addColorStop(0, "#ffd60c");
                 gradient.addColorStop(1, "#ff8a00");
-                this.ctx.font = "50px Arial";
+                this.ctx.font = "42px Goblin";
                 this.ctx.fillStyle = gradient;
-                this.ctx.fillText("Press any Key to Start", 100, 50);
+                this.ctx.fillText("Press any Key to Start", 20, 50);
             }, 20);
         }
     }

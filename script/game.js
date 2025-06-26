@@ -16,6 +16,7 @@ window.addEventListener('keydown', (e) => {
         if(keyboard.JUMP == false){
         keyboard.SPACE = true;
         keyboard.KEYPRESS = true;
+        keyboard.JUMP = true;
         } else {
             keyboard.SPACE = false;
         }

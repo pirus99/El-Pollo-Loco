@@ -4,18 +4,27 @@ class MovableObject extends DrawableObject {
     acceleration = 1;
     energy = 100;
     deadRun = 0;
+    audio;
+    audioFiles = [];
+    k = 3000;
+    lastHit;
+    plays = 0;
+    playIndex = -1;
 
     applyGravity(force) {
-        setInterval(() => {
-            if(this instanceof Character){
-            keyboard.JUMP = false;
+        const aniInterval = setInterval(() => {
+            if (this instanceof Character && !this.isAboveGround()) {
+                keyboard.JUMP = false;
             }
             if (this.isAboveGround() || this.speedY >= 20 || force) {
                 this.y -= this.speedY;
                 this.speedY -= this.acceleration;
-                if(this instanceof Character){
-                keyboard.JUMP = true;
+                if (this instanceof Character) {
+                    keyboard.JUMP = true;
                 }
+            }
+            if (world.animate == false) {
+                clearInterval(aniInterval);
             }
         }, 15)
 
@@ -54,8 +63,13 @@ class MovableObject extends DrawableObject {
                 this.y + this.height - 50 > mo.y &&
                 this.x < mo.x &&
                 this.y + 50 < mo.y + mo.height;
+        } else if (mo instanceof Boss) {
+            return this.x + 5 + this.width > mo.x + 50 &&
+                this.y + this.height > mo.y &&
+                this.x + 5 < mo.x + 50 &&
+                this.y < mo.y + mo.height;
         } else {
-            return this.x - 30 + this.width > mo.x  &&
+            return this.x - 30 + this.width > mo.x &&
                 this.y + this.height > mo.y &&
                 this.x < mo.x &&
                 this.y < mo.y + mo.height;
@@ -89,6 +103,7 @@ class MovableObject extends DrawableObject {
     bottleHit() {
         this.energy -= 50;
         console.log('Bottle Hit!' + this.energy + 'HP')
+        this.lastHit = new Date().getTime();
         if (this.energy < 0) {
             this.killBottle();
         }
@@ -97,11 +112,10 @@ class MovableObject extends DrawableObject {
     hit() {
         this.energy -= 1;
         console.log('hit! left: ' + this.energy + 'HP');
+        this.lastHit = new Date().getTime();
         if (this.energy < 0) {
             this.energy = 0;
-        } else {
-            this.lastHit = new Date().getTime();
-        }
+        } 
     }
 
     gameEndOver() {
@@ -111,8 +125,9 @@ class MovableObject extends DrawableObject {
             world.clearWorld();
             const interval = setInterval(() => {
                 if (keyboard.CLICK) {
+                    keyboard.KEYPRESS = false;
                     world.level.overlayObjects = [];
-                    initWorld();
+                    initStart();
                     clearInterval(interval)
                 }
             }, 25);
@@ -145,6 +160,66 @@ class MovableObject extends DrawableObject {
 
     isDead() {
         return this.energy == 0;
+    }
+
+
+    /**
+     * Preload an array of audio file URLs.
+     * @param {string[]} sounds - Array of audio file URLs to preload.
+     */
+    preloadSounds(sounds) {
+        for (let i = 0; i < sounds.length; i++) {
+            const audio = new Audio(sounds[i]);
+            audio.preload = 'auto';
+            this.audioFiles[i] = audio;
+        }
+    }
+
+    /**
+     * Play a preloaded sound by index.
+     * @param {number} index - Index of the audio in the preloaded array.
+     * @param {number} volume - Volume level (0.0 to 1.0).
+     * @param {number} duration - Duration to play the sound in seconds.
+     * @param {boolean} single - if sound should be played single (true), or infinite often or x times (false)
+     * @param {number} plays - How many times the sound can play.
+     */
+    playSound(index, volume = 1.0, duration = 1.0, times) {
+        const audio = this.audioFiles[index];
+        if (!audio) {
+            console.log(`Audio at index ${index} not found.`);
+            return;
+        }
+
+        // Clone the audio to allow overlapping playbacks
+        if(!times) {
+        const clone = audio.cloneNode();
+        clone.volume = volume;
+        clone.currentTime = 0;
+        if (world.animate) {
+            clone.play();
+        }
+        setTimeout(() => {
+            clone.pause();
+            clone.currentTime = 0;
+        }, duration * 1000);
+    }
+
+        if(times > this.plays || this.playIndex != index) {
+        const clone = audio.cloneNode();
+        clone.volume = volume;
+        clone.currentTime = 0;
+        if (world.animate) {
+            clone.play();
+            this.plays += 1;
+            this.playIndex = index;
+        }
+        setTimeout(() => {
+            clone.pause();
+            this.plays -= 1;
+            this.playIndex = -1;
+            clone.currentTime = 0;
+        }, duration * 1000);
+    }
     }
 
     moveRight() {
