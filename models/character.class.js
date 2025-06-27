@@ -141,8 +141,8 @@ class Character extends MovableObject {
             if (this.isDead()) {
                 this.playAnimation(this.imagesDead);
                 this.deadRun++;
-                this.playSound(3, 0.3, 2, 1)
                 if (this.deadRun > 60) {
+                    this.playSound(3, 0.6, 2, 1)
                     this.gameEndOver();
                     this.deadRun = 0;
                     clearInterval(aniInterval);
@@ -204,7 +204,7 @@ class Character extends MovableObject {
      */
     movementLeft() {
         if (keyboard.RIGHT && !keyboard.SHIFT && this.x < world.level.levelEndX) {
-            this.x += 8;
+            this.x += 4;
             this.playAnimation(this.imagesWalk);
             this.idleTime = new Date().getTime();
             this.otherDirection = false;
@@ -216,7 +216,7 @@ class Character extends MovableObject {
      */
     movementRight() {
         if (keyboard.LEFT && !keyboard.SHIFT && this.x > 0) {
-            this.x -= 8;
+            this.x -= 4;
             this.playAnimation(this.imagesWalk);
             this.idleTime = new Date().getTime();
             this.otherDirection = true;
@@ -228,7 +228,7 @@ class Character extends MovableObject {
      */
     movementLeftFast() {
         if (keyboard.RIGHT && keyboard.SHIFT && this.x < world.level.levelEndX) {
-            this.x += 16;
+            this.x += 8;
             this.playAnimation(this.imagesWalk);
             this.idleTime = new Date().getTime();
             this.otherDirection = false;
@@ -240,7 +240,7 @@ class Character extends MovableObject {
      */
     movementRightFast() {
         if (keyboard.LEFT && keyboard.SHIFT && this.x > 10) {
-            this.x -= 16;
+            this.x -= 8;
             this.playAnimation(this.imagesWalk);
             this.idleTime = new Date().getTime();
             this.otherDirection = true;
@@ -279,7 +279,7 @@ class Character extends MovableObject {
                     this.playAnimation(this.imagesLongIdle);
                     this.k++;
                     if (this.k >= 15) {
-                    this.playSound(1,0.08,3)
+                    this.playSound(1,0.08,3,1)
                     this.k = 0;
                     }
                 } else {

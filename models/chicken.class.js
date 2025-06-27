@@ -85,7 +85,7 @@ class Chicken extends MovableObject {
                 this.playAnimation(this.imagesWalk);
                 this.k++;
                 if (this.k >= 250) {
-                    this.playSound(0, 0.2, 10)
+                    this.playSound(0, 0.1, 10, 1)
                     this.k = 0;
                 }
             }

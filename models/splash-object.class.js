@@ -20,6 +20,8 @@ class SplashObject extends DrawableObject {
     this.height = 100;
     this.width = 100;
     this.animateSplash();
+    this.preloadSounds(['./../sound/glass-crack.mp3']);
+    this.playSound(0,0.5,2,1)
   }
 
 animateSplash() {
