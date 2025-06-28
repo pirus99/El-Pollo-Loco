@@ -28,8 +28,10 @@ function closeModal() {
 function muteAll() {
     if (mute) {
         mute = false;
+        document.getElementById('muteBtn').innerHTML = '&#128264';
     } else {
         mute = true;
+        document.getElementById('muteBtn').innerHTML = '&#128263';
     }
 }
 

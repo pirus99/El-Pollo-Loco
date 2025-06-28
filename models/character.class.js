@@ -279,7 +279,7 @@ class Character extends MovableObject {
                     this.playAnimation(this.imagesLongIdle);
                     this.k++;
                     if (this.k >= 15) {
-                    this.playSound(1,0.08,3,1)
+                    this.playSound(1,0.04,3,1)
                     this.k = 0;
                     }
                 } else {

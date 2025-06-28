@@ -76,7 +76,9 @@ class DrawableObject {
         if(!times) {
         const clone = audio.cloneNode();
         if (!mute) {
-        clone.volume = volume;
+            clone.volume = 0;
+        } else {
+            clone.volume = volume;
         }
         clone.currentTime = 0;
         if (world.animate) {
@@ -90,7 +92,11 @@ class DrawableObject {
 
         if(times > this.plays || this.playIndex != index) {
         const clone = audio.cloneNode();
-        clone.volume = volume;
+        if (!mute) {
+            clone.volume = 0;
+        } else {
+            clone.volume = volume;
+        }
         clone.currentTime = 0;
         if (world.animate) {
             clone.play();
