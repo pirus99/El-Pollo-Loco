@@ -124,10 +124,12 @@ canvas {
 
 .modal-content {
     width: 50%;
+    height: 80%;
     color: white;
     background-color: rgb(88, 83, 83);
     padding: 16px;
     border-radius: 8px;
+    overflow-y: scroll;
 }
 
 .modal-title {
