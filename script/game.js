@@ -39,9 +39,7 @@ window.addEventListener('keydown', (e) => {
 window.addEventListener('click', (e) => {
     if (e) {
         keyboard.CLICK = true;
-        keyboard.KEYPRESS = true;
         const to = setTimeout(() => {
-            keyboard.KEYPRESS = false;
             keyboard.CLICK = false;
             clearTimeout(to)
         }, 100);

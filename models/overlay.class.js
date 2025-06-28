@@ -36,7 +36,7 @@ class Overlay extends DrawableObject {
                     gradient.addColorStop(1, "#ff8a00");
                     ctx.font = "40px Goblin";
                     ctx.fillStyle = gradient;
-                    ctx.fillText("Click to Restart", 120, 420);
+                    ctx.fillText("Click to Restart", 120, 390);
             }
     }
 

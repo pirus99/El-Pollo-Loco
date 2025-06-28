@@ -65,7 +65,7 @@ class DrawableObject {
      * @param {boolean} single - if sound should be played single (true), or infinite often or x times (false)
      * @param {number} plays - How many times the sound can play.
      */
-    playSound(index, volume = 1.0, duration = 1.0, times) {
+    playSound(index, volume = 0, duration = 1.0, times) {
         const audio = this.audioFiles[index];
         if (!audio) {
             console.log(`Audio at index ${index} not found.`);
@@ -75,7 +75,9 @@ class DrawableObject {
         // Clone the audio to allow overlapping playbacks
         if(!times) {
         const clone = audio.cloneNode();
+        if (!mute) {
         clone.volume = volume;
+        }
         clone.currentTime = 0;
         if (world.animate) {
             clone.play();

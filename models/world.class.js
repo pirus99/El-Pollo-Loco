@@ -136,7 +136,7 @@ class World {
                     enemy.stop = true;
                     enemy.kill(enemy, index);
                     this.level.collectableCoinObjects.push(
-                        new CollactableObject('../img/8_coin/coin_1.png', enemy.x, enemy.y - 50)
+                        new CollactableObject('./../img/8_coin/coin_1.png', enemy.x, enemy.y - 50)
                     );
                     this.character.speedY = 2; // Bounce effect
                 } else if (!isAboveEnemy) {
@@ -242,14 +242,15 @@ class World {
             if (!this.gameOver) {
                 this.gameOver = true;
                 this.level.overlayObjects.push(
-                    new Overlay('../img/9_intro_outro_screens/game_over/game over.png', 0, 0, canvas.width, canvas.height, true)
+                    new Overlay('./../img/9_intro_outro_screens/game_over/game over.png', 0, 0, canvas.width, canvas.height, true)
                 );
                 this.level.overlayObjects.push(
-                    new Overlay('../img/You won, you lost/You win B.png', 210, 20, 300, 80, false)
+                    new Overlay('./../img/You won, you lost/You win B.png', 210, 20, 300, 80, false)
                 );
                 this.clearWorld();
                 const interval = setInterval(() => {
                     if (keyboard.CLICK) {
+                        keyboard.KEYPRESS = false;
                         this.level.overlayObjects = [];
                         initStart();
                         clearInterval(interval);
@@ -275,10 +276,10 @@ class World {
         this.splashObjects = [];
         this.character.applyGravity(true);
         setTimeout(() => {
+            this.animate = false;
             if (this.animationFrameId) {
                 cancelAnimationFrame(this.animationFrameId);
             }
-            this.animate = false;
         }, 500);
         
     }

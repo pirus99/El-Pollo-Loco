@@ -17,7 +17,64 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <h1>El Pollo Loco</h1>
-        <canvas width="720" height="480" id="canvas"></canvas>
+        <div id="RotateWrap" class="flip">
+            <img src="./img/rotate.gif" alt="Please Rotate your Device">
+        </div>
+        <div class="canvas-wrap" id="canvasWrap">
+            <canvas width="720" height="480" id="canvas"></canvas>
+            <div id="aboutWrap" class="modal">
+                <div class="modal-content" id="modalContent">
+                    <div class="modal-title">
+                        <div><h2>About - El Pollo Loco</h2></div>
+                        <button class="closeBtn" onclick="closeModal()">X</button>
+                    </div>
+                    <div>
+                        <h3>Game Target</h3>
+                        <p>
+                            You Control Pepe, he does not like Chicken very much. 
+                            But when Chickens are Flat, rubbed with some Salsa and freshly Grilled He loves to eat them!
+                            But when Pepe does that, the Chicken Mama gets Really Angry! <br><br>
+                            So collect some Bottles and Coins to prevent Chicken Mama from eating Pepe as revenge!
+                        </p>
+                        <h3>Controls</h3>
+                        <p class="hide-mobile">
+                            To Move Left or Right use A or D, < or > Keys<br>
+                            To Jump use Space Bar<br>
+                            To Sprint use Shift Keys<br>
+                            To Throw Bottles use G or 0 Keys<br>
+                        </p>
+                        <p class="hide-desktop">
+                            To Move Left or Right use < or > Keys<br>
+                            To Jump use &#128316; Key<br>
+                            To Sprint use &#9197; Key<br>
+                            To Throw Bottles use <img class="btn-img" src="./img/6_salsa_bottle/salsa_bottle.png" alt="Salsa Bottle"> Key<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel" id="panelTop">
+                <div class="col">
+                    <button class="btn" id="aboutBtn" onclick="about()">&#10067;</button>
+                    <button class="btn" id="muteBtn" onclick="muteAll()">&#128263;</button>
+                    <button class="btn" id="resetBtn" onclick="reset()">&#10226;</button>
+                    <button class="btn" id="fullBtn" onclick="fullscreenToggle()">&#x26F6;</button>
+                </div>
+            </div>
+            <div class="panel" id="panelBottom">
+                <div class="left row">
+                    <button class="btn" id="btnLeft">&#9204;</button>
+                    <button class="btn" id="btnRight">&#9205;</button>
+                </div>
+                <div class="right">
+                    <button class="btn" id="btnSprint">&#9197;</button>
+                    <button class="btn" id="btnBottle"><img class="btn-img" src="./img/6_salsa_bottle/salsa_bottle.png" alt="Salsa Bottle"></button>
+                    <button class="btn" id="btnJump">&#128316;</button>
+                    
+                </div>
+            </div>
+        </div>
+
+
         <script src="./models/drawable-object.class.js"></script>
         <script src="./models/movable-object.class.js"></script>
         <script src="./models/throwable-object.class.js"></script>
@@ -40,7 +97,6 @@
         <script src="./models/startscreen.class.js"></script>
         <script src="./models/keyboard.class.js"></script>
         
-
         <script src="./script/script.js" defer></script>
     </body>
 </html>

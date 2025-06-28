@@ -124,7 +124,7 @@ class MovableObject extends DrawableObject {
                     keyboard.KEYPRESS = false;
                     world.level.overlayObjects = [];
                     initStart();
-                    clearInterval(interval)
+                    clearInterval(interval);
                 }
             }, 25);
         }
