@@ -1,5 +1,4 @@
 class ChickenSmall extends Chicken {
-    energy = 50;
     /**
      * @property {number} height - The height of the chicken, calculated based on the factor.
      */
@@ -23,6 +22,7 @@ class ChickenSmall extends Chicken {
 
    constructor(x, speed) {
        super(x, speed);
+       this.energy = 49;
        this.loadImages(this.imagesWalk);
        this.preloadSounds(['./../sound/chicken-cluking-3.mp3'])
    }
