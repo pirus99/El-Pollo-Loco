@@ -23,8 +23,13 @@ function about() {
     document.getElementById('aboutWrap').style.display = 'flex';
 }
 
+function legal() {
+    document.getElementById('legalWrap').style.display = 'flex';
+}
+
 function closeModal() {
     document.getElementById('aboutWrap').style.display = 'none';
+    document.getElementById('legalWrap').style.display = 'none';
 }
 
 function muteAll() {
@@ -75,8 +80,9 @@ function reset() {
 document.addEventListener('click', function (event) {
     const modalContent = document.getElementById('modalContent');
     const panelTop = document.getElementById('panelTop');
+    const decBtn = document.getElementById('decBtn');
 
-    if (!modalContent.contains(event.target) && !panelTop.contains(event.target)) {
+    if (!modalContent.contains(event.target) && !panelTop.contains(event.target) && !decBtn.contains(event.target)) {
         closeModal();
     }
 });

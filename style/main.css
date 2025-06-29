@@ -157,8 +157,19 @@ canvas {
 }
 
 .flip {
-        display: none;
+    display: none;
     }
+
+.decBtn {
+    background-color:rgba(240, 248, 255, 0);
+    border: none;
+    margin-top: 40px;
+}
+
+.decBtn:hover {
+    cursor: pointer;
+    background-color: aliceblue;;
+}
 
 @media (min-width: 1800px) {
     h1 {
@@ -207,6 +218,9 @@ canvas {
     .btn-img{
         height: 40px;
         width: 40px;
+    }
+    .decBtn {
+        display: none;
     }
 }
 
