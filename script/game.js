@@ -32,8 +32,6 @@ window.addEventListener('keydown', (e) => {
     } else if (e.key) {
         keyboard.KEYPRESS = true;
     }
-
-    console.log(keyboard);
 });
 
 window.addEventListener('click', (e) => {

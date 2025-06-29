@@ -190,7 +190,7 @@ class Character extends MovableObject {
      */
     movementJump() {
         if (keyboard.SPACE && !keyboard.JUMP) {
-            this.playSound(0, 0.8, 2, 1)
+            this.playSound(0, 0.8, 2, 2)
             this.jump();
             this.idleTime = new Date().getTime();
         } else if (this.isAboveGround()) {

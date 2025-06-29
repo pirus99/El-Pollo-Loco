@@ -1,5 +1,19 @@
 class ChickenSmall extends Chicken {
     energy = 50;
+    /**
+     * @property {number} height - The height of the chicken, calculated based on the factor.
+     */
+    height = 88 * this.factor / 100;
+
+    /**
+     * @property {number} width - The width of the chicken, calculated based on the factor.
+     */
+    width = 66 * this.factor / 100;
+
+    /**
+     * @property {number} y - The initial y-coordinate for the chicken's position.
+     */
+    y = getRandomNumber(345, 355);
 
    imagesWalk = [
         '../img/3_enemies_chicken/chicken_small/1_walk/1_w.png',

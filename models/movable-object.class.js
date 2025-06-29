@@ -74,13 +74,11 @@ class MovableObject extends DrawableObject {
 
     kill(mo) {
         mo.energy -= 101;
-        console.log('hit! left: ' + mo.energy + 'HP');
         if (mo.energy < 0) {
             mo.energy = 0;
             this.flatenChicks(mo)
         } else {
             mo.lastHit = new Date().getTime();
-            console.log('last Hit' + mo.lastHit)
         }
     }
 
@@ -98,7 +96,6 @@ class MovableObject extends DrawableObject {
 
     bottleHit() {
         this.energy -= 50;
-        console.log('Bottle Hit!' + this.energy + 'HP')
         this.lastHit = new Date().getTime();
         if (this.energy < 0) {
             this.killBottle();
@@ -106,8 +103,7 @@ class MovableObject extends DrawableObject {
     }
 
     hit() {
-        this.energy -= 1;
-        console.log('hit! left: ' + this.energy + 'HP');
+        this.energy -= 0.5;
         this.lastHit = new Date().getTime();
         if (this.energy < 0) {
             this.energy = 0;
@@ -141,10 +137,8 @@ class MovableObject extends DrawableObject {
     collect(type) {
         if (type === 'bottle') {
             this.bottles += 2;
-            console.log('collected! left: ' + this.bottles + 'Bottles');
         } else if (type === 'coin') {
             this.coins += 1;
-            console.log('Collected Coin!' + this.coins + 'Coins')
         }
     }
 

@@ -86,7 +86,6 @@ class World {
         this.level.throwableObjects.forEach((obj, index) => {
             this.level.enemies.forEach((enemy, enemyIndex) => {
                 if (enemy.isColliding(obj)) {
-                    console.log('bottle Hit!');
                     enemy.bottleHit();
                     this.statusbarBottle.setPercentage(this.character.bottles);
                     let newObject = new SplashObject(this.level.throwableObjects[index].x, this.level.throwableObjects[index].y);
@@ -188,7 +187,7 @@ class World {
             this.grenadeTime = new Date().getTime();
             this.statusbarBottle.setPercentage(this.character.bottles);
         } else if (this.keyboard.GRENADE && this.character.bottles < 1 && this.timecheck(new Date().getTime())) {
-            console.log('no Bottles');
+            /* Add Sound Here */
         }
     }
 
@@ -280,7 +279,7 @@ class World {
             if (this.animationFrameId) {
                 cancelAnimationFrame(this.animationFrameId);
             }
-        }, 500);
+        }, 600);
         
     }
 }

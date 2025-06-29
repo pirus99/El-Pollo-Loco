@@ -7,4 +7,5 @@ class CollactableObject extends DrawableObject {
         this.width = 100;
         this.loadImage(img)
     }
+
 }

@@ -21,7 +21,6 @@ class Startscreen {
         };
         this.startGame();
         this.changeGradient();
-        console.log('Startscreen Called')
     }
 
     draw() {

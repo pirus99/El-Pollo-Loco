@@ -4,6 +4,8 @@ let keyboard = new Keyboard();
 let fullscreen = 0;
 let mute = false;
 
+    muteAll();
+
 function init() {
     canvas = document.getElementById('canvas');
     initStart();
